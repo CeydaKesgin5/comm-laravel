@@ -1,0 +1,165 @@
+# Base URL
+@baseUrl = http://localhost:8000
+# Laragon kullanıyorsanız (virtual host):
+# @baseUrl = http://localhost
+
+### Healthcheck
+GET {{baseUrl}}/api/
+
+### Members - List
+GET {{baseUrl}}/api/members
+
+### Members - Create
+POST {{baseUrl}}/api/members
+Content-Type: application/json
+
+{
+  "name": "Ada Lovelace",
+  "email": "ada@example.com",
+  "role": "admin",
+  "image_url": null,
+  "team": "Core"
+}
+
+### Members - Show
+# ID yerine member_id kullanılır
+GET {{baseUrl}}/api/members/1
+
+### Members - Update (PUT)
+PUT {{baseUrl}}/api/members/1
+Content-Type: application/json
+
+{
+  "name": "Ada L.",
+  "role": "editor"
+}
+
+### Members - Partial Update (PATCH)
+PATCH {{baseUrl}}/api/members/1
+Content-Type: application/json
+
+{
+  "team": "Community"
+}
+
+### Members - Delete
+DELETE {{baseUrl}}/api/members/1
+
+### Events - List
+GET {{baseUrl}}/api/events
+
+### SPONSOR ENDPOINTS ##################################################
+
+### 1. Get All Sponsors
+GET {{baseUrl}}/api/sponsors
+
+### 2. Create New Sponsor
+POST {{baseUrl}}/api/sponsors
+Content-Type: application/json
+
+{
+  "name": "Örnek Sponsor",
+  "sponsorship_type": "altin"
+}
+
+### 3. Get Single Sponsor
+# Replace :id with an actual sponsor_id from the response above
+GET {{baseUrl}}/api/sponsors/1
+
+### 4. Update Sponsor
+PUT {{baseUrl}}/api/sponsors/1
+Content-Type: application/json
+
+{
+  "name": "Güncellenmiş Sponsor",
+  "sponsorship_type": "gumus"
+}
+
+### 5. Delete Sponsor
+# Replace :id with an actual sponsor_id
+DELETE {{baseUrl}}/api/sponsors/1
+
+### CONTACT ENDPOINTS ##################################################
+
+### 1. Get All Contacts (with pagination and search)
+GET {{baseUrl}}/api/contacts?page=1&per_page=5
+
+### 2. Create New Contact
+POST {{baseUrl}}/api/contacts
+Content-Type: application/json
+
+{
+  "name": "Test User",
+  "email": "test@example.com",
+  "subject": "Test Subject",
+  "message": "This is a test message for the contact form."
+}
+
+### 3. Get Single Contact
+# Replace :id with an actual contact_id from the response above
+GET {{baseUrl}}/api/contacts/1
+
+### 4. Update Contact
+PUT {{baseUrl}}/api/contacts/1
+Content-Type: application/json
+
+{
+  "name": "Updated Test User",
+  "email": "updated@example.com",
+  "subject": "Updated Subject",
+  "message": "This is an updated test message."
+}
+
+### 5. Delete Contact
+# Replace :id with an actual contact_id
+DELETE {{baseUrl}}/api/contacts/1
+
+### 6. Get Contact Statistics
+GET {{baseUrl}}/api/contacts/stats
+
+### 7. Search Contacts
+GET {{baseUrl}}/api/contacts?search=test
+
+### 6. Get Deleted Sponsor (Should Return 404)
+# Replace :id with the deleted sponsor_id
+GET {{baseUrl}}/api/sponsors/1
+
+### END SPONSOR ENDPOINTS ##############################################
+
+
+### Events - Create
+POST {{baseUrl}}/api/events
+Content-Type: application/json
+
+{
+  "title": "Toplantı",
+  "description": "Aylık buluşma",
+  "date": "2025-09-01 10:00:00",
+  "location": "İstanbul",
+  "image_url": null,
+  "status": "registered"
+}
+
+### Events - Show
+# ID yerine event_id kullanılır
+GET {{baseUrl}}/api/events/1
+
+### Events - Update (PUT)
+PUT {{baseUrl}}/api/events/1
+Content-Type: application/json
+
+{
+  "title": "Güncellenmiş Toplantı",
+  "location": "Ankara"
+}
+
+### Events - Partial Update (PATCH)
+PATCH {{baseUrl}}/api/events/1
+Content-Type: application/json
+
+{
+  "status": "attended"
+}
+
+### Events - Delete
+DELETE {{baseUrl}}/api/events/1
