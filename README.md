@@ -27,4 +27,5 @@ php artisan migrate:fresh --seed
 ```
 ```bash
 php artisan serve 
-```ile çalıştırmayı unutma
+```
+ile çalıştırmayı unutma
